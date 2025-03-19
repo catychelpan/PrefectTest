@@ -2,7 +2,6 @@ import httpx
 import pandas as pd
 from datetime import datetime
 from prefect import flow, task
-from prefect.task_runners import SequentialTaskRunner
 from prefect.deployments import Deployment
 from prefect.server.schemas.schedules import CronSchedule
 
@@ -33,7 +32,7 @@ def load_to_csv(repo: str, stars: int):
     except Exception as e:
         print(f"Error saving data: {e}")
 
-@flow(task_runner=SequentialTaskRunner())
+@flow
 def etl_github_data():
     """Prefect Flow: Run the full ETL process"""
     github_repos = ["PrefectHQ/prefect", "pydantic/pydantic", "huggingface/transformers"]
