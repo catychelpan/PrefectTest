@@ -2,7 +2,6 @@ import httpx
 import pandas as pd
 from datetime import datetime
 from prefect import flow, task
-from prefect.deployments import Deployment
 from prefect.server.schemas.schedules import CronSchedule
 
 CSV_FILE = "github_repo_stats.csv"
